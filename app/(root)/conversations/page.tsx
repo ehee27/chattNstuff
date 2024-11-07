@@ -4,7 +4,11 @@ import React from 'react'
 type Props = {}
 
 const ConversationsPage = (props: Props) => {
-  return <ConversationFallback />
+  return (
+    // <ConversationContainer>
+    <ConversationFallback />
+    // </ConversationContainer>
+  )
 }
 
 export default ConversationsPage
