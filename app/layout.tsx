@@ -3,6 +3,8 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { ConvexClientProvider } from '@/ConvexClientProvider'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { ThemeProvider } from '@/components/ui/theme/theme-provider'
+import { Toaster } from '@/components/ui/sonner'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -30,9 +32,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ConvexClientProvider>
-          <TooltipProvider>{children}</TooltipProvider>
-        </ConvexClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnchange
+        >
+          <ConvexClientProvider>
+            <TooltipProvider>{children}</TooltipProvider>
+            <Toaster richColors />
+          </ConvexClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
